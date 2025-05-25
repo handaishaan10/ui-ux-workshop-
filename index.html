@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Design Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #6a0572;
+            --secondary-color: #ab47bc;
+            --accent-color: #ffc107;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-dark: #f0f2f5;
+            --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 8px 15px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e0ac00;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            color: var(--text-light);
+            text-align: center;
+            padding: 150px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(photo.png);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: blur(5px);
+            transform: scale(1.02);
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .section-padded {
+            padding: 80px 0;
+        }
+
+        #about {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .schedule-section {
+            background-color: var(--bg-dark);
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .day-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .day-card ul {
+            margin-top: 20px;
+        }
+
+        .day-card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+
+        .day-card ul li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .call-to-action h2 {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .call-to-action p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .social-links {
+            margin-top: 15px;
+        }
+
+        footer .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar .logo {
+                margin-bottom: 10px;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .navbar .nav-links li {
+                margin: 5px 0;
+            }
+
+            .day-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 100px 0;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Ignite Your Design Journey</h1>
+            <p>A 4-Day Immersive UI/UX Design Workshop</p>
+            <a href="#schedule" class="btn">View Schedule</a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">UI/UX Workshop</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about" class="section-padded">
+        <div class="container">
+            <h2>About the Workshop</h2>
+            <p>Unlock the secrets of exceptional user interface and user experience design. This intensive 4-day workshop is crafted for aspiring designers, developers, and anyone eager to build intuitive and delightful digital products. From foundational principles to advanced techniques and a hands-on project, you'll gain the skills and confidence to create impactful designs.</p>
+        </div>
+    </section>
+
+    <section id="schedule" class="section-padded schedule-section">
+        <div class="container">
+            <h2>Workshop Schedule</h2>
+            <div class="days-grid">
+                <div class="day-card">
+                    <h3>Day 1: Design Fundamentals</h3>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> About UI/UX: What it is and why it matters</li>
+                        <li><i class="fas fa-arrow-right"></i> Navigation: Principles of intuitive user flows</li>
+                        <li><i class="fas fa-arrow-right"></i> Basic Figma Tools: Your design playground</li>
+                        <li><i class="fas fa-arrow-right"></i> Layout: Structuring your designs effectively</li>
+                        <li><i class="fas fa-arrow-right"></i> Doubt Session</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3>Day 2: Visual Elements & Theory</h3>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Vectors and Raster: Understanding image types</li>
+                        <li><i class="fas fa-arrow-right"></i> Grouping, Hierarchy: Organizing information visually</li>
+                        <li><i class="fas fa-arrow-right"></i> Color Theory: Psychology and application</li>
+                        <li><i class="fas fa-arrow-right"></i> Typography: Making text readable and beautiful</li>
+                        <li><i class="fas fa-arrow-right"></i> Doubt Session</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3>Day 3: Advanced Techniques & Project Kickoff</h3>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Important Plugins: Boosting your workflow</li>
+                        <li><i class="fas fa-arrow-right"></i> Gradients, Effects: Adding depth and appeal</li>
+                        <li><i class="fas fa-arrow-right"></i> Home Project: Start building your masterpiece</li>
+                        <li><i class="fas fa-arrow-right"></i> Doubt Session</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3>Day 4: Project Showcase & Beyond</h3>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Project Review: Constructive feedback</li>
+                        <li><i class="fas fa-arrow-right"></i> Fixing Mistakes: Polishing your work</li>
+                        <li><i class="fas fa-arrow-right"></i> Surprise Project: A new challenge awaits!</li>
+                        <li><i class="fas fa-arrow-right"></i> Farewell & Networking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="section-padded call-to-action">
+        <div class="container">
+            <h2>Ready to Design Your Future?</h2>
+            <p>Spaces are limited! Secure your spot in this transformative workshop today.</p>
+            <a href="https://example.com/registration" target="_blank" class="btn btn-secondary">Register Now!</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 UI/UX Design Workshop. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
